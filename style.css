@@ -1,8 +1,79 @@
-@import url("https://fonts.google.com/specimen/Barlow+Semi+Condensed");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Barlow', sans-serif;
+  font-family: "Barlow", sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.game {
+  height: 100vh;
+  background: radial-gradient(
+    circle at top,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
+  padding: 2rem 0;
+  display: flex;
+  gap: 5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  .board {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    width: min(40rem, 90%);
+    border: 2px solid #999;
+    border-radius: 1rem;
+
+    .title {
+      line-height: 1.7rem;
+    }
+  }
+
+  .score {
+    padding: 0.5rem;
+    width: 7rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 0.5rem;
+
+    .number,
+    span {
+      color: hsl(215, 44%, 47%);
+      font-weight: 600;
+      letter-spacing: 0.2rem;
+
+      &.number {
+        color: hsl(235, 10%, 45%);
+        font-size: 3rem;
+        font-weight: bold;
+        letter-spacing: unset;
+      }
+    }
+  }
+
+  .hands {
+    height: -webkit-fill-available;
+
+    & > div {
+      display: grid;
+      place-content: center;
+      border-radius: 50%;
+      background-color: #eee;
+      height: 12rem;
+      width: 12rem;
+      border: 1.5rem solid hsl(39, 89%, 49%);
+      box-shadow: 0 1rem teal;
+    }
+  }
 }
