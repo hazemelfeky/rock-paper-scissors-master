@@ -22,6 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  overflow: hidden;
 
   .board {
     display: flex;
@@ -29,7 +30,7 @@
     justify-content: space-between;
     padding: 1rem 1.5rem;
     width: min(40rem, 90%);
-    border: 2px solid #999;
+    border: 0.2rem solid #3d4b66;
     border-radius: 1rem;
 
     .title {
@@ -64,8 +65,16 @@
 
   .hands {
     height: -webkit-fill-available;
+    position: relative;
+    transform: translateX(4rem);
+    perspective: 10rem;
+
+    .hand {
+      z-index: 2;
+    }
 
     & > div {
+      position: absolute;
       display: grid;
       place-content: center;
       border-radius: 50%;
@@ -73,7 +82,32 @@
       height: 12rem;
       width: 12rem;
       border: 1.5rem solid hsl(39, 89%, 49%);
-      box-shadow: 0 1rem teal;
+      box-shadow: 0 0.5rem hsl(39, 89%, 40%);
+      transition: all 0.4s ease-in-out;
+    }
+
+    .hand-0 {
+      transform: translateX(-19rem);
+      border-color: hsl(349, 71%, 52%);
+      box-shadow: 0 0.5rem hsl(349, 71%, 40%);
+    }
+
+    .hand-2 {
+      transform: translateX(-9rem) translateY(13rem);
+    }
+
+    .hand-5 {
+      /* transform: translateX(-4rem); */
+      border-color: hsl(230, 89%, 62%);
+      box-shadow: 0 0.5rem hsl(230, 89%, 40%);
+    }
+
+    .selected {
+      transform: translateX(-15rem) translateY(5rem) translateZ(4rem);
+    }
+
+    .hide {
+      opacity: 0;
     }
   }
 }
