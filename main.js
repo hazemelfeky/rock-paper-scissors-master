@@ -1,5 +1,6 @@
-const hands = document.getElementsByClassName("hand");
+const controlHands = document.getElementsByClassName("controls");
 const resContainer = document.getElementById("hande-result");
+let selected = false;
 
 const choices = [
   { name: "rock", src: "./images/icon-rock.svg" },
@@ -19,8 +20,9 @@ function showComputerChoice() {
 }
 
 function onSelectHand(selectedHand) {
-  if (selectedHand.classList.contains("hide")) return;
-  for (const hand of hands) {
+  if (selectedHand.classList.contains("hide") || selected) return;
+  selected = true;
+  for (const hand of controlHands) {
     if (hand == selectedHand) {
       hand.classList.add("selected");
     } else {
@@ -30,7 +32,19 @@ function onSelectHand(selectedHand) {
   showComputerChoice();
 }
 
-for (const hand of hands) {
+function reset() {
+  for (const hand of controlHands) {
+    hand.classList.remove("hide");
+    hand.classList.remove("selected");
+    resContainer.classList.add("hide");
+    while (resContainer.firstChild) {
+      resContainer.removeChild(resContainer.firstChild);
+    }
+    selected = false;
+  }
+}
+
+for (const hand of controlHands) {
   hand.addEventListener("click", () => {
     onSelectHand(hand);
   });

@@ -103,7 +103,12 @@
     }
 
     .selected {
-      transform: translateX(-15rem) translateY(5rem) translateZ(4rem);
+      transform: translateX(-17rem) translateY(7rem) translateZ(4rem);
+    }
+
+    .res {
+      transform: translateX(0) translateY(7rem) translateZ(4rem);
+      z-index: 1;
     }
 
     .hide {
