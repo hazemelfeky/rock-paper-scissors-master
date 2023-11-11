@@ -1,5 +1,6 @@
 const controlHands = document.getElementsByClassName("controls");
 const resContainer = document.getElementById("hande-result");
+const resDicision = document.getElementById("result-decision");
 let selected = false;
 
 const choices = [
@@ -16,6 +17,7 @@ function showComputerChoice() {
     resImg.src = computerChoice.src;
     resContainer.append(resImg);
     resContainer.classList.remove("hide");
+    resDicision.classList.remove("hide");
   }, 1000);
 }
 
@@ -37,6 +39,7 @@ function reset() {
     hand.classList.remove("hide");
     hand.classList.remove("selected");
     resContainer.classList.add("hide");
+    resDicision.classList.add("hide");
     while (resContainer.firstChild) {
       resContainer.removeChild(resContainer.firstChild);
     }

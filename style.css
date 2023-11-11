@@ -103,16 +103,24 @@
     }
 
     .selected {
-      transform: translateX(-17rem) translateY(7rem) translateZ(4rem);
+      transform: translateX(-20rem) translateY(7rem) translateZ(2rem);
     }
 
     .res {
-      transform: translateX(0) translateY(7rem) translateZ(4rem);
+      transform: translateX(1rem) translateY(7rem) translateZ(2rem);
       z-index: 1;
     }
+  }
+}
+.hide {
+  opacity: 0;
+}
 
-    .hide {
-      opacity: 0;
-    }
+.result {
+  & > * {
+    text-transform: uppercase;
+  }
+  & > button {
+    color: hsl(235, 10%, 45%);
   }
 }
