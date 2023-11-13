@@ -68,6 +68,7 @@
     position: relative;
     transform: translateX(4rem);
     perspective: 10rem;
+    z-index: 2;
 
     .hand {
       z-index: 2;
@@ -103,24 +104,62 @@
     }
 
     .selected {
-      transform: translateX(-20rem) translateY(7rem) translateZ(2rem);
+      transform: translateX(-20rem) translateY(7rem) translateZ(2rem) !important;
     }
 
     .res {
       transform: translateX(1rem) translateY(7rem) translateZ(2rem);
-      z-index: 1;
+      z-index: 2;
     }
   }
 }
 .hide {
   opacity: 0;
+  z-index: 1 !important;
 }
 
 .result {
+  position: relative;
+  z-index: 2;
   & > * {
     text-transform: uppercase;
   }
   & > button {
     color: hsl(235, 10%, 45%);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .game {
+    .hands {
+      .hand {
+        width: 10rem;
+        height: 10rem;
+        border-width: 1rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .game {
+    .hands {
+      .hand {
+        width: 8rem;
+        height: 8rem;
+        /* border-width: 0.5rem; */
+        &.hand-0 {
+          transform: translateX(-14rem);
+        }
+
+        &.hand-2 {
+          transform: translateX(-8rem) translateY(9rem);
+        }
+
+        &.hand-5 {
+          transform: translateX(-2rem);
+        }
+      }
+    }
   }
 }

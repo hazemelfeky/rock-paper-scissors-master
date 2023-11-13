@@ -1,6 +1,7 @@
 const controlHands = document.getElementsByClassName("controls");
 const resContainer = document.getElementById("hande-result");
 const resDicision = document.getElementById("result-decision");
+const resText = document.getElementById("res-text");
 let selected = false;
 
 const choices = [
@@ -10,6 +11,7 @@ const choices = [
 ];
 
 function showComputerChoice() {
+  const options = [0, 2, 5];
   const res = Math.floor(Math.random() * 3);
   setTimeout(() => {
     const computerChoice = choices[res];
@@ -19,6 +21,7 @@ function showComputerChoice() {
     resContainer.classList.remove("hide");
     resDicision.classList.remove("hide");
   }, 1000);
+  return options[res];
 }
 
 function onSelectHand(selectedHand) {
@@ -31,7 +34,9 @@ function onSelectHand(selectedHand) {
       hand.classList.add("hide");
     }
   }
-  showComputerChoice();
+  const youChoice = selectedHand.attributes["data-value"].value;
+  const computerChoice = showComputerChoice();
+  calculateResult(youChoice, computerChoice);
 }
 
 function reset() {
@@ -51,4 +56,20 @@ for (const hand of controlHands) {
   hand.addEventListener("click", () => {
     onSelectHand(hand);
   });
+}
+
+function calculateResult(yourChoice, computerChoice) {
+  const options = {
+    0: { win: [2], lose: [5] },
+    2: { win: [5], lose: [0] },
+    5: { win: [0], lose: [2] },
+  };
+  console.log(yourChoice, computerChoice);
+  if (options[yourChoice]["win"].includes(computerChoice)) {
+    console.log("win");
+  } else if (options[yourChoice]["lose"].includes(computerChoice)) {
+    console.log("lose");
+  } else {
+    console.log("draw");
+  }
 }
