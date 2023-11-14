@@ -2,7 +2,10 @@ const controlHands = document.getElementsByClassName("controls");
 const resContainer = document.getElementById("hande-result");
 const resDicision = document.getElementById("result-decision");
 const resText = document.getElementById("res-text");
+const scoreNumber = document.getElementById("score-number");
 let selected = false;
+let score = 0;
+scoreNumber.innerText = score;
 
 const choices = [
   { name: "rock", src: "./images/icon-rock.svg" },
@@ -20,6 +23,7 @@ function showComputerChoice() {
     resContainer.append(resImg);
     resContainer.classList.remove("hide");
     resDicision.classList.remove("hide");
+    scoreNumber.innerText = score;
   }, 1000);
   return options[res];
 }
@@ -66,10 +70,12 @@ function calculateResult(yourChoice, computerChoice) {
   };
   console.log(yourChoice, computerChoice);
   if (options[yourChoice]["win"].includes(computerChoice)) {
-    console.log("win");
+    resText.innerText = "You win!!";
+    score++;
   } else if (options[yourChoice]["lose"].includes(computerChoice)) {
-    console.log("lose");
+    resText.innerText = "You lost as always";
+    score--;
   } else {
-    console.log("draw");
+    resText.innerText = "Draw";
   }
 }
